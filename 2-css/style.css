@@ -1,3 +1,6 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 main {
     /* removing display: flex; on main allows flex positioning to work?! */
@@ -11,13 +14,33 @@ main {
 }
 
 .header {
-    background-color: #5C4033;
+    position: flex;
+    flex-direction: row;
+    max-width: 100vw;
+    /* position: static;
+    top: 50%;
+    left: 50%; */
+    background-color: #43281c;
     color: white;
+    /* margin: 0; */
+    /* padding: 0; */
     /* why don't justify-content and align-items work? */
     /* justify-content: center; */
     /* align-items: center; */
     /* fix the below: not a good solution */
-    padding-left: 40%;
+    padding-left: 45%;
+}
+
+.header img {
+    width: 2rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    color: #fbf2c0;
+    gap: 5px;
 }
 
 h1, h2 {
@@ -25,10 +48,17 @@ h1, h2 {
     padding: 0;
 }
 
+h1 {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
 h2 {
     color: #a68262;
     font-size: medium;
+    font-weight:600;
     text-transform: uppercase;
+    padding: 5px;
 }
 
 .menu-items, .name, .payment {
@@ -36,20 +66,23 @@ h2 {
     /* margin: 20px; */
     border-radius: 10px;
     padding: 5px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .menu {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    /* background-color: magenta; */
     align-items: top;
+    gap: 30px;
+    padding: 10px;
 }
 
 .items {
     display: flex;
     flex-direction: column;
-    max-width: 40%;
+    min-width: calc(50vw - 45px);
 } 
 
 .item {
@@ -65,13 +98,19 @@ h2 {
 .item ul {
     list-style: none;
     padding-left: 1rem;
+    margin-top: -0.5rem;
+    color: #a68262;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    max-width: 40%;
+    min-width: calc(50vw - 45px);
     gap: 20px;
+}
+
+.name, .payments {
+    padding-bottom: 20px;
 }
 
 label {
@@ -82,13 +121,27 @@ label {
     background-color: #ede0d4;
     color:#a68262;
     max-width: fit-content;
+    font-size: smaller;
+    padding: 0 5px;
 }
 
 input {
     border: 2px solid #a68262;
     border-radius: 50px;
-    padding: 0.5rem;
+    padding: 0.75rem;
     background-color: #ede0d4;
     color: black;
 }
 
+button {
+    background-color: #c19c7b;
+    border: none;
+    border-radius: 50px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: column;
+}
