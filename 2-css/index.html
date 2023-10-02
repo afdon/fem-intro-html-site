@@ -18,7 +18,12 @@
           <div class="items">
             <div class="item">
               <p>1x</p>
-              <p>Cappuccino</p>
+              <div>
+                  <p>Cappuccino</p>
+                <ul>
+                    <li>Lite foam</li>
+                </ul>
+              </div>
               <p>$3.35</p>
             </div>
             <div class="item">
@@ -34,17 +39,23 @@
           </div>
         </div>
         <div class="form">
-          <div>
+          <div class="name">
             <h2>Name</h2>
             <label for="name">Name for Order</label>
             <input type="text" id="name" />
           </div>
           <div>
-            <h2>Payment</h2>
-            <label for="card-number">Number</label>
-            <input type="number" id="card-number" />
-            <label for="ccv">CCV</label>
-            <input type="number" id="ccv" />
+              <div class="payment">
+                <h2>Payment</h2>
+              <div>
+                <label for="card-number">Number</label>
+                <input type="number" id="card-number" />
+              </div>
+              <div>
+                <label for="ccv">CCV</label>
+                <input type="number" id="ccv" />
+              </div>
+            </div>
           </div>
         </div>
       </div>

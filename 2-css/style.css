@@ -1,20 +1,94 @@
 
 main {
-    display: flex;
+    /* removing display: flex; on main allows flex positioning to work?! */
+    /* display: flex; */
     background-color: lightgrey;
+    padding: 20px;
+    /* why doesn't gap work? */
+    /* gap: 20px; */
+    /* why does fit-content do this weird thing? */
+    /* width: fit-content; */
+}
+
+.header {
+    background-color: #5C4033;
+    color: white;
+    /* why don't justify-content and align-items work? */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* fix the below: not a good solution */
+    padding-left: 40%;
+}
+
+h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #a68262;
+    font-size: medium;
+    text-transform: uppercase;
+}
+
+.menu-items, .name, .payment {
+    background-color: #ede0d4;
+    /* margin: 20px; */
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid red;
 }
 
 .menu {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: top;
 }
 
 .items {
     display: flex;
     flex-direction: column;
-}
+    max-width: 40%;
+} 
 
 .item {
     display: flex;
     flex-direction: row;
+    /* justify-content: space-between; */
 }
+
+.item p {
+    margin: 1rem;
+}
+
+.item ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
+    gap: 20px;
+}
+
+label {
+    display: block;
+    position: relative;
+    left: 15px;
+    top: 10px;
+    background-color: #ede0d4;
+    color:#a68262;
+    max-width: fit-content;
+}
+
+input {
+    border: 2px solid #a68262;
+    border-radius: 50px;
+    padding: 0.5rem;
+    background-color: #ede0d4;
+    color: black;
+}
+
