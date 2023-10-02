@@ -1,0 +1,21 @@
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    width: 40vh;
+    height: 60vh;
+    background-color: magenta;
+}
+
+.calculator {
+
+}
+
+input {
+    /* box-sizing: border-box; */
+    width: 100%;
+    background-color: black;
+    color: white;
+}
