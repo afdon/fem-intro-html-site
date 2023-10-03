@@ -20,7 +20,14 @@ const handleClick = (event) => {
             store = eval(store.slice(0, -1)); // WHY DOESN'T THIS WORK
         } catch (error) {
             console.error(error)
+            alert(error)
         }
+    }
+
+    if (store.slice(-1) === "←") {
+        // remove the last two chars from store.
+        store = store.slice(0, -2)
+        console.log(store)
     }
 
     if (store.slice(-1) === "C") {
