@@ -22,7 +22,7 @@ const handleClick = (event) => {
         clearOnNextBtnPress = true
       } catch (error) {
         console.error(error);
-        alert(`Error: ${error}`);
+        alert(`Error: ${error}.`);
       }
       break;
     }
