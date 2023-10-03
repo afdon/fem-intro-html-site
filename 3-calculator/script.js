@@ -1,46 +1,43 @@
-
-
-let store = "0"
+let store = "0";
 
 const handleClick = (event) => {
-    console.log(event)
+  console.log(event);
 
-    store += event.target.innerHTML;
-    console.log(store);
-    console.log(typeof store)
-    console.log(store[-1])
+  let operation = event.target.innerHTML;
+  console.log("operation", operation);
 
-    // if (store.slice(-1) === "=") {
-    //     store = store.slice(0, -1);
-    //     store = eval(store)
-    // }
-
-    if (store.slice(-1) === "=") {
-        try {
-            store = eval(store.slice(0, -1)); // WHY DOESN'T THIS WORK
-        } catch (error) {
-            console.error(error)
-            alert(error)
-        }
+  switch (operation) {
+    case "=": {
+      try {
+        store = eval(store);
+        console.log(`This is the current store: ${store}`);
+      } catch (error) {
+        console.error(error);
+        alert(`Error: ${error}`);
+      }
+      break;
     }
-
-    if (store.slice(-1) === "←") {
-        // remove the last two chars from store.
-        store = store.slice(0, -2)
-        console.log(store)
+    case "←": {
+        console.log(store);
+        store = store.slice(0, -1);
+        console.log(store);
+        break;
     }
-
-    if (store.slice(-1) === "C") {
-        store = 0
+    case "C": {
+        store = 0;
+        break;
     }
+    default : {
+        store += operation;
+    }
+  }
 
-    // reflect it in the display.
-    document.getElementById("results-display").innerHTML = store;
-}
+  // reflect it in the display.
+  document.getElementById("results-display").innerHTML = store;
+};
 
 const buttons = document.querySelectorAll("button");
 
-buttons.forEach(btn => {
-    btn.addEventListener('click', handleClick);
+buttons.forEach((btn) => {
+  btn.addEventListener("click", handleClick);
 });
-
