@@ -70,11 +70,12 @@ button:hover {
 
 .span-two {
     min-width: 20vh;
-    /* flex: 2; */
+    /* flex-grow: 2; */
 }
 
 .span-three {
     width: 30vh;
+    /* flex-grow: 3; */
 }
 
 button:last-of-type {
