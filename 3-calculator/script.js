@@ -12,8 +12,17 @@ const handleClick = (event) => {
 
     store += event.target.innerHTML;
     console.log(store);
+    console.log(typeof store)
 
+    if (store.slice(-1) === "=") {
+        // evaluate the statement
+        store.slice(0, -1)
+        eval(store) // WHY IS THIS NOT WORKINGGGGGG
+    }
 
+    if (store.slice(-1) === "C") {
+        store = 0
+    }
 
     // reflect it in the display.
     document.getElementById("results-display").innerHTML = store;
