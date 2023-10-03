@@ -1,16 +1,25 @@
 let store = "0";
 
+let clearOnNextBtnPress = false;
+
 const handleClick = (event) => {
   console.log(event);
 
   let operation = event.target.innerHTML;
   console.log("operation", operation);
 
+  if (clearOnNextBtnPress) {
+    store = "0"
+    clearOnNextBtnPress = false;
+  }
+
   switch (operation) {
     case "=": {
       try {
         store = eval(store);
         console.log(`This is the current store: ${store}.`);
+        // reset the store
+        clearOnNextBtnPress = true
       } catch (error) {
         console.error(error);
         alert(`Error: ${error}`);
