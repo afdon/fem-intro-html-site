@@ -1,14 +1,9 @@
 
 
-let store = 0
+let store = "0"
 
 const handleClick = (event) => {
     console.log(event)
-    // if the button's value is a number, store it.
-    // if (typeof parseInt(event.target.innerHTML) === "number") {
-    //     store += event.target.innerHTML;
-    //     console.log(store);
-    // }
 
     store += event.target.innerHTML;
     console.log(store);
@@ -21,8 +16,11 @@ const handleClick = (event) => {
     // }
 
     if (store.slice(-1) === "=") {
-        // evaluate the statement and store the result
-        store = eval(store.slice(0, -1)); // WHY DOESN'T THIS WORK
+        try {
+            store = eval(store.slice(0, -1)); // WHY DOESN'T THIS WORK
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     if (store.slice(-1) === "C") {
