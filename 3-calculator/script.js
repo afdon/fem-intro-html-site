@@ -10,7 +10,7 @@ const handleClick = (event) => {
     case "=": {
       try {
         store = eval(store);
-        console.log(`This is the current store: ${store}`);
+        console.log(`This is the current store: ${store}.`);
       } catch (error) {
         console.error(error);
         alert(`Error: ${error}`);
@@ -28,6 +28,9 @@ const handleClick = (event) => {
         break;
     }
     default : {
+        if (store.charAt(0) === "0") {
+            store = store.slice(1, store.length)
+        }
         store += operation;
     }
   }
