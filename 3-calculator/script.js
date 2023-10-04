@@ -18,7 +18,6 @@ const handleClick = (event) => {
       try {
         store = eval(store);
         console.log(`This is the current store: ${store}.`);
-        // reset the store
         clearOnNextBtnPress = true
       } catch (error) {
         console.error(error);
@@ -44,7 +43,6 @@ const handleClick = (event) => {
     }
   }
 
-  // reflect it in the display.
   document.getElementById("results-display").innerHTML = store;
 };
 
