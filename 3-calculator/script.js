@@ -19,6 +19,8 @@ const handleClick = (event) => {
         store = eval(store);
         console.log(`This is the current store: ${store}.`);
         clearOnNextBtnPress = true
+        // why doesn't this console log show store = 0?
+        console.log(`Store after clear: ${store}.`)
       } catch (error) {
         console.error(error);
         alert(`Error: ${error}.`);
@@ -36,7 +38,7 @@ const handleClick = (event) => {
         break;
     }
     default : {
-        if (store.charAt(0) === "0") {
+        if (store.charAt(0) === "0" && store.length > 1) {
             store = store.slice(1, store.length)
         }
         store += operation;
