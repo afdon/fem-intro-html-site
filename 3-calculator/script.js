@@ -8,10 +8,10 @@ const handleClick = (event) => {
   let operation = event.target.innerHTML;
   console.log("operation", operation);
 
-  if (clearOnNextBtnPress) {
-    store = "0"
-    clearOnNextBtnPress = false;
-  }
+//   if (clearOnNextBtnPress) {
+//     store = "0"
+//     clearOnNextBtnPress = false;
+//   }
 
   switch (operation) {
     case "=": {
@@ -38,7 +38,7 @@ const handleClick = (event) => {
         break;
     }
     default : {
-        if (store.charAt(0) === "0" && store.length > 1) {
+        if (store.length > 1 && store.charAt(0) === "0") {
             store = store.slice(1, store.length)
         }
         store += operation;
