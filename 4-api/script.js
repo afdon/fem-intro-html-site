@@ -30,4 +30,6 @@ function addNewDoggo() {
 // }
 
 document.getElementById("dog-btn").addEventListener("click", addNewDoggo);
+
+// document.getElementById("dog-btn-2").addEventListener("click", addNewDoggo);
  
