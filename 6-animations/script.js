@@ -1,4 +1,4 @@
-const popmotion = requre('popmotion')
+const popmotion = require('popmotion')
 
 const ball = document.querySelector(".ball");
 
