@@ -9,6 +9,11 @@ body {
     padding: 0;
 }
 
+div {
+    /* override display: block */
+    display: flex;
+}
+
 h1 {
     text-align: center;
 }
@@ -40,5 +45,12 @@ h1 {
 }
 
 .cell {
-
+    width: 25%;
+    height: 10vh; /* why can't this be a percentage? */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
