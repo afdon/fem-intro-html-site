@@ -20,16 +20,16 @@ function addNewDoggo() {
         })
 }
 
-// async function addAnotherDoggo() {
-//     const promise = await fetch(DOG_URL);
-//     const processedResponse = await promise.json();
-//     const img = document.createElement("img");
-//     img.src = processedResponse.message;
-//     img.alt = "Cute doggo";
-//     doggos.appendChild(img);
-// }
+async function addAnotherDoggo() {
+    const promise = await fetch(DOG_URL);
+    const processedResponse = await promise.json();
+    const img = document.createElement("img");
+    img.src = processedResponse.message;
+    img.alt = "Cute doggo";
+    doggos.appendChild(img);
+}
 
 document.getElementById("dog-btn").addEventListener("click", addNewDoggo);
 
-// document.getElementById("dog-btn-2").addEventListener("click", addNewDoggo);
+document.getElementById("dog-btn-2").addEventListener("click", addNewDoggo);
  
