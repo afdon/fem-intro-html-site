@@ -1,4 +1,4 @@
-const document = document.querySelector(".ball");
+const ball = document.querySelector(".ball");
 
 popmotion.animate({
     from: "0px",
@@ -7,7 +7,7 @@ popmotion.animate({
     repeatType: "mirror",
     type: "spring",
     onUpdate(update) {
-        ball.getElementsByClassName.left = update;
+        ball.style.left = update;
     }
 });
 
