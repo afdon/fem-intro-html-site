@@ -1,4 +1,4 @@
-const popmotion = require('popmotion')
+// const popmotion = require('popmotion')
 
 const ball = document.querySelector(".ball");
 
@@ -9,7 +9,6 @@ popmotion.animate({
     repeatType: "mirror",
     type: "spring",
     onUpdate(update) {
-        // how on earth does popmotion have access to ball.style
         ball.style.left = update;
     }
 });
