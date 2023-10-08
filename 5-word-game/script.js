@@ -25,17 +25,9 @@ async function validateWord(url = "", data = {}) {
 }
 
 validateWord("https://words.dev-apis.com/validate-word", { word: "hello" }).then((data) => {
-  console.log(data); // JSON data parsed by `data.json()` call
+  // JSON data parsed by `data.json()` call:
+  console.log(`The word ${data.word} is valid: ${data.validWord}`); 
 })
-
-// async function validateWord(json) {
-//   try {
-//     const validity = await fetch("https://words.dev-apis.com/validate-word", { "word": "crane" }).then(response => response.json());
-//     console.log(validity)
-//   } catch (error) {
-//     console.error(`There was an error: ${error}.`)
-//   }
-// }
 
 let guesses = [];
 
