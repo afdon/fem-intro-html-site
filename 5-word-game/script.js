@@ -3,6 +3,7 @@ const lettersPerWord = 5;
 const isValidWord = false;
 let unvalidatedGuess = ""
 let validGuess
+let answer
 
 async function getAnswer() {
   try {
@@ -16,7 +17,16 @@ async function getAnswer() {
   }
 };
 
-let answer = getAnswer();
+getAnswer().then(response => answer = response)
+console.log("answer:", answer)
+
+// or
+
+async function main() {
+  answer = await getAnswer();
+  console.log("answer:", answer);
+}
+main()
 
 async function validateWord(data = {}) {
   try {
@@ -85,9 +95,17 @@ box.addEventListener("keyup", function (e) {
           guesses.push(data.word)
           console.log(guesses)
           unvalidatedGuess = ""
+          if (checkWin()) {
+            alert("You got it! The answer is ${answer}")
+          }
           if (guesses.length === maxGuesses) {
-            checkWin(); // check for win/loss
+            if (checkWin()) {
+              alert("You got it! The answer is ${answer}")
+            } else {
+              alert(`Sorry, you lose. The answer was ${answer}. Try again tomorrow.`)
+            }
             guesses = [] // end the game and reset guesses
+            location.reload(); // reload the page
           }
         } else {
           alert(`Sorry, "${data.word}" isn't a valid word.`)
@@ -99,9 +117,9 @@ box.addEventListener("keyup", function (e) {
 
   function checkWin() {
     if (guesses.includes(answer)) {
-      alert("You win!")
+      return true
     } else {
-      alert ("You lost!")
+      return false
     }
   }
 
@@ -112,7 +130,6 @@ box.addEventListener("keyup", function (e) {
   console.log(`This is guesses: ${guesses}. The array length is ${guesses.length}.`);
 });
 
-// takes a guess and returns
 
 function checkGuess(guess) {
   const chars = guess.split("");
