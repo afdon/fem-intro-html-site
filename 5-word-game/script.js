@@ -79,7 +79,7 @@ let box = document.querySelector("input");
 box.addEventListener("keyup", function (e) {
   console.log(e.key); // this.value?
 
-  if (isLetters(e.key)) unvalidatedGuess = unvalidatedGuess + (e.key);
+  if (e.key.length === 1 && isLetters(e.key)) unvalidatedGuess = unvalidatedGuess + (e.key);
 
   if (e.key === 'Backspace' && unvalidatedGuess.length > 1) {
     unvalidatedGuess.slice(0, -1);
@@ -95,11 +95,11 @@ box.addEventListener("keyup", function (e) {
           console.log(guesses)
           unvalidatedGuess = ""
           if (checkWin()) {
-            alert("You got it! The answer is ${answer}")
+            alert(`You got it! The answer is ${answer}.`)
           }
           if (guesses.length === maxGuesses) {
             if (checkWin()) {
-              alert("You got it! The answer is ${answer}")
+              alert(`You got it! The answer is ${answer}.`)
             } else {
               alert(`Sorry, you lose. The answer was ${answer}. Try again tomorrow.`)
             }
