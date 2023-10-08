@@ -1,22 +1,26 @@
 const maxGuesses = 6;
 const lettersPerWord = 5;
+const isValidWord = false;
 
 let answer = "words"; 
+
 let guesses = [];
-let isWord = false;
 
 let box = document.querySelector('input')
 
 box.addEventListener('keyup', function(e) {
   console.log(e.key) // this.value?
 
-  let i = 0;
-  let j = 0;
-  while (j <= maxGuesses && i <= lettersPerWord) {
+  // if letters per word > lettersPerWord
+
     guesses.push(e.key)
     console.log(`This is guesses: ${guesses}.`)
-  }
+    
 })
+
+
+
+// takes a guess and returns 
 
 function checkGuess(guess) {
   const chars = guess.split("");
