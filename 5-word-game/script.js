@@ -23,7 +23,7 @@ async function getAnswer() {
 
 async function main() {
   answer = await getAnswer();
-  console.log("answer:", answer);
+  // console.log("answer:", answer);
 }
 main()
 
@@ -94,6 +94,9 @@ box.addEventListener("keyup", function (e) {
           guesses.push(data.word)
           console.log(guesses)
           unvalidatedGuess = ""
+
+          // run the checkGuess function here.
+
           if (checkWin()) {
             alert(`You got it! The answer is ${answer}.`)
           }
@@ -168,6 +171,7 @@ function checkGuess(guess) {
 
 console.log("guesses: ", guesses);
 
-function handleGuess(guess) {
-  let status = checkGuess(guess);
-}
+// function handleGuess(guess) {
+//   let status = checkGuess(guess);
+// }
+
