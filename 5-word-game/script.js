@@ -1,18 +1,21 @@
 const maxGuesses = 6;
 const lettersPerWord = 5;
 const isValidWord = false;
+let unvalidatedGuess = "highs"
 
 async function getAnswer() {
   try {
-    const response = await fetch("https://words.dev-apis.com/word-of-the-day").then(response => response.json());
-    console.log("The word is", response.word) // why is there automatically a space before the word?
+    const response = await fetch("https://words.dev-apis.com/word-of-the-day")
+    const body = await response.json();
+    console.log("The word is", body.word) // why is there automatically a space before the word?
+    console.log(body.word)
+    return body.word;
   } catch (error) {
     console.error(`There was an error: ${error}.`)
   }
 };
 
-const answer = getAnswer();
-console.log(answer)
+getAnswer();
 
 async function validateWord(url = "", data = {}) {
   try {
@@ -27,7 +30,7 @@ async function validateWord(url = "", data = {}) {
   }
 }
 
-validateWord("https://words.dev-apis.com/validate-word", { word: "hello" }).then((data) => {
+validateWord("https://words.dev-apis.com/validate-word", { word: unvalidatedGuess }).then((data) => {
   // JSON data parsed by `data.json()` call:
   console.log(`The word ${data.word} is valid: ${data.validWord}`); 
 })
