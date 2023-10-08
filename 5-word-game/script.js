@@ -7,8 +7,8 @@ async function getAnswer() {
   try {
     const response = await fetch("https://words.dev-apis.com/word-of-the-day")
     const body = await response.json();
-    console.log("The word is", body.word) // why is there automatically a space before the word?
-    console.log(body.word)
+    console.log("The word is", body.word) 
+    // why is there automatically a space before the word?
     return body.word;
   } catch (error) {
     console.error(`There was an error: ${error}.`)
@@ -17,9 +17,9 @@ async function getAnswer() {
 
 getAnswer();
 
-async function validateWord(url = "", data = {}) {
+async function validateWord(data = {}) {
   try {
-    const response = await fetch(url, {
+    const response = await fetch("https://words.dev-apis.com/validate-word", {
       method: "POST",
       cache: "no-cache",
       body: JSON.stringify(data),
@@ -30,7 +30,7 @@ async function validateWord(url = "", data = {}) {
   }
 }
 
-validateWord("https://words.dev-apis.com/validate-word", { word: unvalidatedGuess }).then((data) => {
+validateWord({ word: unvalidatedGuess }).then((data) => {
   // JSON data parsed by `data.json()` call:
   console.log(`The word ${data.word} is valid: ${data.validWord}`); 
 })
