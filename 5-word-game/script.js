@@ -11,6 +11,9 @@ async function getAnswer() {
   }
 };
 
+const answer = getAnswer();
+console.log(answer)
+
 async function validateWord(url = "", data = {}) {
   try {
     const response = await fetch(url, {
