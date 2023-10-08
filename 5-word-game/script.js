@@ -45,7 +45,6 @@ async function validateWord(data = {}) {
 
 // }
 
-
 let guesses = [];
 
 function isLetters(string) {
@@ -60,10 +59,9 @@ function isLetters(string) {
      return false;
      }
   }
+  // console.log(isLetters("hello"))
 
-  console.log(isLetters("hello"))
-
-const isFiveLetters = (string) => {
+const isFiveChars = (string) => {
   if (string.length === 5) return true;
 }
 
@@ -74,20 +72,28 @@ box.addEventListener("keyup", function (e) {
 
   if (isLetters(e.key)) unvalidatedGuess = unvalidatedGuess + (e.key);
 
-  if (unvalidatedGuess.length === lettersPerWord) {
+  if (e.key === 'Backspace' && unvalidatedGuess.length > 1) {
+    unvalidatedGuess.slice(0, -1);
+    console.log(unvalidatedGuess)
+  }
 
+  if (unvalidatedGuess.length === lettersPerWord) {
       validateWord({ word: unvalidatedGuess }).then((data) => {
         // JSON data parsed by `data.json()` call:
         console.log(`The word ${data.word} is valid: ${data.validWord}`);
         if (data.validWord) {
           guesses.push(data.word)
+          console.log(guesses)
           unvalidatedGuess = ""
-          if (guesses.length >= maxGuesses) {
-            checkWin();
+          if (guesses.length === maxGuesses) {
+            checkWin(); // check for win/loss
+            guesses = [] // end the game and reset guesses
           }
         } else {
           alert(`Sorry, "${data.word}" isn't a valid word.`)
+          unvalidatedGuess = ""
         }
+        clearInput()
       })
   }
 
@@ -99,7 +105,11 @@ box.addEventListener("keyup", function (e) {
     }
   }
 
-  console.log(`This is guesses: ${guesses}.`);
+  function clearInput() {
+    box.value = ""
+  }
+
+  console.log(`This is guesses: ${guesses}. The array length is ${guesses.length}.`);
 });
 
 // takes a guess and returns
