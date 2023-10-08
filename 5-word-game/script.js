@@ -17,9 +17,8 @@ async function getAnswer() {
   }
 };
 
-getAnswer().then(response => answer = response)
-console.log("answer:", answer)
-
+// getAnswer().then(response => answer = response)
+// console.log("answer:", answer)
 // or
 
 async function main() {
