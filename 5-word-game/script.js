@@ -89,17 +89,16 @@ box.addEventListener("keyup", function (e) {
   if (unvalidatedGuess.length === lettersPerWord) {
       validateWord({ word: unvalidatedGuess }).then((data) => {
         // JSON data parsed by `data.json()` call:
-        console.log(`The word ${data.word} is valid: ${data.validWord}`);
+        console.log(`The word ${data.word} is valid: ${data.validWord}.`);
         if (data.validWord) {
-          guesses.push(data.word)
           // console.log(guesses)
           unvalidatedGuess = ""
-
-          let status = checkGuess(data.word).charsStatus
-          console.log(`charsStatus: ${status[0].isCorrectPosition}.`);
           
-
           // run the checkGuess function here.
+          let status = checkGuess(data.word).charsStatus
+          console.log(`The first char is in the correct position: ${status[0].isCorrectPosition}. Is included: ${status[0].isIncluded}.`);
+          
+          guesses.push(data.word)
           const didWin = checkWin()
           if (didWin) {
             alert(`You got it! The answer is ${answer}.`)
