@@ -92,25 +92,25 @@ box.addEventListener("keyup", function (e) {
         console.log(`The word ${data.word} is valid: ${data.validWord}`);
         if (data.validWord) {
           guesses.push(data.word)
-          console.log(guesses)
+          // console.log(guesses)
           unvalidatedGuess = ""
 
-          // run the checkGuess function here.
+          let status = checkGuess(data.word).charsStatus
+          console.log(`charsStatus: ${status[0].isCorrectPosition}.`);
+          
 
-          if (checkWin()) {
+          // run the checkGuess function here.
+          const didWin = checkWin()
+          if (didWin) {
             alert(`You got it! The answer is ${answer}.`)
-          }
-          if (guesses.length === maxGuesses) {
-            if (checkWin()) {
-              alert(`You got it! The answer is ${answer}.`)
-            } else {
-              alert(`Sorry, you lose. The answer was ${answer}. Try again tomorrow.`)
-            }
+          } else if (guesses.length === maxGuesses) {
+              console.log(`Sorry, you lose. The answer was ${answer}. Try again tomorrow.`)
+            
             guesses = [] // end the game and reset guesses
             location.reload(); // reload the page
           }
         } else {
-          alert(`Sorry, "${data.word}" isn't a valid word.`)
+          console.log(`Sorry, "${data.word}" isn't a valid word.`)
           unvalidatedGuess = ""
         }
         clearInput()
