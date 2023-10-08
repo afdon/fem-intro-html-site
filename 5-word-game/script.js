@@ -1,7 +1,8 @@
 const maxGuesses = 6;
 const lettersPerWord = 5;
 const isValidWord = false;
-let unvalidatedGuess = "highs"
+let unvalidatedGuess = "glorp"
+let validGuess
 
 async function getAnswer() {
   try {
@@ -33,6 +34,11 @@ async function validateWord(data = {}) {
 validateWord({ word: unvalidatedGuess }).then((data) => {
   // JSON data parsed by `data.json()` call:
   console.log(`The word ${data.word} is valid: ${data.validWord}`); 
+  if (data.validWord) {
+    validGuess = data.word
+  } else {
+    alert(`Sorry, "${data.word}" isn't a valid word.`)
+  }
 })
 
 let guesses = [];
