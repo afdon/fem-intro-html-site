@@ -45,9 +45,9 @@ input {
     margin-bottom: 0;
 } */
 
-.brand {
+/* .brand {
     font-size: 30px;
-}
+} */
 
 .board {
     display: flex;
@@ -73,4 +73,5 @@ input {
     border: 1px solid black;
     font-size: 1.5rem;
     font-weight: bold;
+    text-transform: uppercase;
 }

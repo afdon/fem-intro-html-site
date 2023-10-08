@@ -91,17 +91,34 @@ box.addEventListener("keyup", function (e) {
         // JSON data parsed by `data.json()` call:
         console.log(`The word ${data.word} is valid: ${data.validWord}.`);
         if (data.validWord) {
-          console.log(guesses)
           unvalidatedGuess = ""
           
           // run the checkGuess function here.
           let status = checkGuess(data.word).charsStatus
           console.log(`The first char is in the correct position: ${status[0].isCorrectPosition}. Is included: ${status[0].isIncluded}.`);
-          
           guesses.push(data.word)
+
+          // now display in UI
+          const firstRow = document.querySelectorAll(`.row-1 > div`)
+          firstRow.forEach((element, i) => element.innerHTML = guesses[0][i])
+          // why is the console log not defined?
+          // console.log(`first row: guesses[0] is ${guesses[0][i]}`)
+          const secondRow = document.querySelectorAll(`.row-2 > div`)
+          secondRow.forEach((element, i) => element.innerHTML = guesses[1][i])
+          const thirdRow = document.querySelectorAll(`.row-3 > div`)
+          thirdRow.forEach((element, i) => element.innerHTML = guesses[2][i])
+          const fourthRow = document.querySelectorAll(`.row-4 > div`)
+          fourthRow.forEach((element, i) => element.innerHTML = guesses[3][i])
+          const fifthRow = document.querySelectorAll(`.row-5 > div`)
+          fifthRow.forEach((element, i) => element.innerHTML = guesses[4][i])
+          const sixthRow = document.querySelectorAll(`.row-6 > div`)
+          sixthRow.forEach((element, i) => element.innerHTML = guesses[5][i])
+          
+          console.log(guesses)
           const didWin = checkWin()
           if (didWin) {
-            alert(`You got it! The answer is ${answer}.`)
+            console.log(`You got it! The answer is ${answer}.`)
+            // location.reload() // don't reload, at least not right away
           } else if (guesses.length === maxGuesses) {
               console.log(`Sorry, you lose. The answer was ${answer}. Try again tomorrow.`)
             
@@ -173,4 +190,13 @@ console.log("guesses: ", guesses);
 // function handleGuess(guess) {
 //   let status = checkGuess(guess);
 // }
+
+function displayGuesses() {
+  for (let i = 0; i < guesses.length; i++) {
+    if (guesses[i]) {
+      let charStatuses = checkGuess(guesses[i])
+      console.log("charStatuses", charStatuses)
+    }
+  }
+}
 
