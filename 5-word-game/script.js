@@ -1,7 +1,7 @@
 const maxGuesses = 6;
 const lettersPerWord = 5;
 const isValidWord = false;
-let unvalidatedGuess = "glorp"
+let unvalidatedGuess = ""
 let validGuess
 
 async function getAnswer() {
@@ -16,7 +16,7 @@ async function getAnswer() {
   }
 };
 
-getAnswer();
+let answer = getAnswer();
 
 async function validateWord(data = {}) {
   try {
@@ -31,24 +31,22 @@ async function validateWord(data = {}) {
   }
 }
 
-if (unvalidatedGuess.length === lettersPerWord) {
+// if (unvalidatedGuess.length === lettersPerWord) {
 
-  validateWord({ word: unvalidatedGuess }).then((data) => {
-    // JSON data parsed by `data.json()` call:
-    console.log(`The word ${data.word} is valid: ${data.validWord}`); 
-    if (data.validWord) {
-      validGuess = data.word
-    } else {
-      alert(`Sorry, "${data.word}" isn't a valid word.`)
-    }
-  })
+//   validateWord({ word: unvalidatedGuess }).then((data) => {
+//     // JSON data parsed by `data.json()` call:
+//     console.log(`The word ${data.word} is valid: ${data.validWord}`); 
+//     if (data.validWord) {
+//       validGuess = data.word
+//     } else {
+//       alert(`Sorry, "${data.word}" isn't a valid word.`)
+//     }
+//   })
 
-}
+// }
 
 
 let guesses = [];
-
-let currentGuess = ""
 
 function isLetters(string) {
    const lettersRegex = /^[A-Za-z]+$/;
@@ -74,9 +72,33 @@ let box = document.querySelector("input");
 box.addEventListener("keyup", function (e) {
   console.log(e.key); // this.value?
 
-  // if letters per word > lettersPerWord
+  if (isLetters(e.key)) unvalidatedGuess = unvalidatedGuess + (e.key);
 
-  guesses.push(e.key);
+  if (unvalidatedGuess.length === lettersPerWord) {
+
+      validateWord({ word: unvalidatedGuess }).then((data) => {
+        // JSON data parsed by `data.json()` call:
+        console.log(`The word ${data.word} is valid: ${data.validWord}`);
+        if (data.validWord) {
+          guesses.push(data.word)
+          unvalidatedGuess = ""
+          if (guesses.length >= maxGuesses) {
+            checkWin();
+          }
+        } else {
+          alert(`Sorry, "${data.word}" isn't a valid word.`)
+        }
+      })
+  }
+
+  function checkWin() {
+    if (guesses.includes(answer)) {
+      alert("You win!")
+    } else {
+      alert ("You lost!")
+    }
+  }
+
   console.log(`This is guesses: ${guesses}.`);
 });
 
