@@ -37,6 +37,28 @@ validateWord("https://words.dev-apis.com/validate-word", { word: unvalidatedGues
 
 let guesses = [];
 
+let currentGuess = ""
+
+function isLetters(string)
+  {
+   const lettersRegex = /^[A-Za-z]+$/;
+   if(string.match(lettersRegex))
+     {
+      return true;
+     }
+   else
+     {
+     alert("message");
+     return false;
+     }
+  }
+
+  console.log(isLetters("hello"))
+
+const isFiveLetters = (string) => {
+  // if 
+}
+
 let box = document.querySelector("input");
 
 box.addEventListener("keyup", function (e) {
