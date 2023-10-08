@@ -91,7 +91,7 @@ box.addEventListener("keyup", function (e) {
         // JSON data parsed by `data.json()` call:
         console.log(`The word ${data.word} is valid: ${data.validWord}.`);
         if (data.validWord) {
-          // console.log(guesses)
+          console.log(guesses)
           unvalidatedGuess = ""
           
           // run the checkGuess function here.
