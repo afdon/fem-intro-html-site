@@ -31,22 +31,26 @@ async function validateWord(data = {}) {
   }
 }
 
-validateWord({ word: unvalidatedGuess }).then((data) => {
-  // JSON data parsed by `data.json()` call:
-  console.log(`The word ${data.word} is valid: ${data.validWord}`); 
-  if (data.validWord) {
-    validGuess = data.word
-  } else {
-    alert(`Sorry, "${data.word}" isn't a valid word.`)
-  }
-})
+if (unvalidatedGuess.length === lettersPerWord) {
+
+  validateWord({ word: unvalidatedGuess }).then((data) => {
+    // JSON data parsed by `data.json()` call:
+    console.log(`The word ${data.word} is valid: ${data.validWord}`); 
+    if (data.validWord) {
+      validGuess = data.word
+    } else {
+      alert(`Sorry, "${data.word}" isn't a valid word.`)
+    }
+  })
+
+}
+
 
 let guesses = [];
 
 let currentGuess = ""
 
-function isLetters(string)
-  {
+function isLetters(string) {
    const lettersRegex = /^[A-Za-z]+$/;
    if(string.match(lettersRegex))
      {
@@ -62,7 +66,7 @@ function isLetters(string)
   console.log(isLetters("hello"))
 
 const isFiveLetters = (string) => {
-  // if 
+  if (string.length === 5) return true;
 }
 
 let box = document.querySelector("input");
