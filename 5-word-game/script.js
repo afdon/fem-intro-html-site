@@ -1,6 +1,22 @@
-let answer = "words"; // 5 letter word
+const maxGuesses = 6;
+const lettersPerWord = 5;
 
+let answer = "words"; 
 let guesses = [];
+let isWord = false;
+
+let box = document.querySelector('input')
+
+box.addEventListener('keyup', function(e) {
+  console.log(e.key) // this.value?
+
+  let i = 0;
+  let j = 0;
+  while (j <= maxGuesses && i <= lettersPerWord) {
+    guesses.push(e.key)
+    console.log(`This is guesses: ${guesses}.`)
+  }
+})
 
 function checkGuess(guess) {
   const chars = guess.split("");
@@ -33,10 +49,10 @@ function checkGuess(guess) {
   });
 };
 
-guesses.push(checkGuess("hello"));
-guesses.push(checkGuess("whatz"));
-guesses.push(checkGuess("wordz"));
-guesses.push(checkGuess("words"));
+// guesses.push(checkGuess("hello"));
+// guesses.push(checkGuess("whatz"));
+// guesses.push(checkGuess("wordz"));
+// guesses.push(checkGuess("words"));
 
 
 console.log(guesses);
