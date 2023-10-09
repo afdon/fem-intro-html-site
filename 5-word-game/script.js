@@ -130,16 +130,16 @@ box.addEventListener("keyup", function (e) {
             })
           })
 
-          const secondRow = document.querySelectorAll(`.row-2 > div`)
-          secondRow.forEach((element, i) => element.innerHTML = guesses[1][i])
-          const thirdRow = document.querySelectorAll(`.row-3 > div`)
-          thirdRow.forEach((element, i) => element.innerHTML = guesses[2][i])
-          const fourthRow = document.querySelectorAll(`.row-4 > div`)
-          fourthRow.forEach((element, i) => element.innerHTML = guesses[3][i])
-          const fifthRow = document.querySelectorAll(`.row-5 > div`)
-          fifthRow.forEach((element, i) => element.innerHTML = guesses[4][i])
-          const sixthRow = document.querySelectorAll(`.row-6 > div`)
-          sixthRow.forEach((element, i) => element.innerHTML = guesses[5][i])
+          // const secondRow = document.querySelectorAll(`.row-2 > div`)
+          // secondRow.forEach((element, i) => element.innerHTML = guesses[1][i])
+          // const thirdRow = document.querySelectorAll(`.row-3 > div`)
+          // thirdRow.forEach((element, i) => element.innerHTML = guesses[2][i])
+          // const fourthRow = document.querySelectorAll(`.row-4 > div`)
+          // fourthRow.forEach((element, i) => element.innerHTML = guesses[3][i])
+          // const fifthRow = document.querySelectorAll(`.row-5 > div`)
+          // fifthRow.forEach((element, i) => element.innerHTML = guesses[4][i])
+          // const sixthRow = document.querySelectorAll(`.row-6 > div`)
+          // sixthRow.forEach((element, i) => element.innerHTML = guesses[5][i])
 
           
           
