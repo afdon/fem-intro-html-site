@@ -99,19 +99,35 @@ box.addEventListener("keyup", function (e) {
           guesses.push(data.word)
 
           // now display in UI
-          const firstRow = document.querySelectorAll(`.row-1 > div`)
-          firstRow.forEach((element, i) => element.innerHTML = guesses[0][i])
-          // why is the console log not defined?
-          // console.log(`first row: guesses[0] is ${guesses[0][i]}`)
-          firstRow.forEach((e, i) => {
-            let statusOfGuess1 = checkGuess(guesses[0]).charsStatus
-            if (statusOfGuess1[i].isCorrectPosition) {
-              e.style.backgroundColor = "green";
-            } else if (statusOfGuess1[i].isIncluded) {
-              e.style.backgroundColor = "yellow"
-            } else {
-              e.style.backgroundColor = "grey"
-            }
+          // const firstRow = document.querySelectorAll(`.row-1 > div`)
+          // firstRow.forEach((element, i) => element.innerHTML = guesses[0][i])
+          // // why is the console log not defined?
+          // // console.log(`first row: guesses[0] is ${guesses[0][i]}`)
+          // firstRow.forEach((e, i) => {
+          //   let statusOfGuess1 = checkGuess(guesses[0]).charsStatus
+          //   if (statusOfGuess1[i].isCorrectPosition) {
+          //     e.style.backgroundColor = "green";
+          //   } else if (statusOfGuess1[i].isIncluded) {
+          //     e.style.backgroundColor = "yellow"
+          //   } else {
+          //     e.style.backgroundColor = "grey"
+          //   }
+          // })
+
+          rows = document.querySelectorAll(`.board > .row`)
+          rows.forEach((row, i) => {
+            let statusOfGuess = checkGuess(guesses[i]).charsStatus
+            let divs = document.querySelectorAll(`.row > div`)
+            divs.forEach((div, j) => {
+              if (guesses[i][j]) {div.innerHTML = guesses[i][j]}
+              if (statusOfGuess[j].isCorrectPosition === true) {
+                div.style.backgroundColor = "green";
+              } else if (statusOfGuess[j].isIncluded) {
+                div.style.backgroundColor = "yellow"
+              } else {
+                div.style.backgroundColor = "grey"
+              }
+            })
           })
 
           const secondRow = document.querySelectorAll(`.row-2 > div`)
