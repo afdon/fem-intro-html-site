@@ -120,7 +120,7 @@ box.addEventListener("keyup", function (e) {
             let divs = document.querySelectorAll(`.row > div`)
             divs.forEach((div, j) => {
               if (guesses[i][j]) {div.innerHTML = guesses[i][j]}
-              if (statusOfGuess[j].isCorrectPosition === true) {
+              if (statusOfGuess[j].isCorrectPosition) {
                 div.style.backgroundColor = "green";
               } else if (statusOfGuess[j].isIncluded) {
                 div.style.backgroundColor = "yellow"
