@@ -92,7 +92,7 @@ box.addEventListener("keyup", function (e) {
         console.log(`The word ${data.word} is valid: ${data.validWord}.`);
         if (data.validWord) {
           unvalidatedGuess = ""
-          
+          clearInput()
           // run the checkGuess function here.
           let status = checkGuess(data.word).charsStatus
           console.log(`The first char is in the correct position: ${status[0].isCorrectPosition}. Is included: ${status[0].isIncluded}.`);
@@ -103,6 +103,17 @@ box.addEventListener("keyup", function (e) {
           firstRow.forEach((element, i) => element.innerHTML = guesses[0][i])
           // why is the console log not defined?
           // console.log(`first row: guesses[0] is ${guesses[0][i]}`)
+          firstRow.forEach((e, i) => {
+            let statusOfGuess1 = checkGuess(guesses[0]).charsStatus
+            if (statusOfGuess1[i].isCorrectPosition) {
+              e.style.backgroundColor = "green";
+            } else if (statusOfGuess1[i].isIncluded) {
+              e.style.backgroundColor = "yellow"
+            } else {
+              e.style.backgroundColor = "grey"
+            }
+          })
+
           const secondRow = document.querySelectorAll(`.row-2 > div`)
           secondRow.forEach((element, i) => element.innerHTML = guesses[1][i])
           const thirdRow = document.querySelectorAll(`.row-3 > div`)
@@ -113,6 +124,8 @@ box.addEventListener("keyup", function (e) {
           fifthRow.forEach((element, i) => element.innerHTML = guesses[4][i])
           const sixthRow = document.querySelectorAll(`.row-6 > div`)
           sixthRow.forEach((element, i) => element.innerHTML = guesses[5][i])
+
+          
           
           console.log(guesses)
           const didWin = checkWin()
