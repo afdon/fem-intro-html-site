@@ -20,24 +20,34 @@ h1 {
     text-align: center;
 }
 
-.input {
-    /* text-align: center; */
+.instructions {
+    text-align: center;
 }
 
 input {
     /* text-align: center; */
     /* margin: 0 50%; */
     margin: 1rem auto;
-    background-color: blue;
-    color: white;
+    background-color: whitesmoke;
     border: none;
-    padding: 1rem;
+    /* border: 1px solid white; */
+    color: black;
+    /* border: none; */
+    padding: 0.75rem;
     border: none;
     font-family: monospace;
     font-size: 2rem;
+    text-transform: uppercase;
     /* I can't use CW? */
-    width: 10rem; 
+    width: 8rem; 
+}
 
+input:focus {
+    border: 1px solid white;
+}
+
+input:focus-visible {
+    border: none;
 }
 
 /* .navbar {
@@ -76,5 +86,5 @@ input {
     font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
-    color: white;
+    color: black;
 }

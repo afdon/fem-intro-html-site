@@ -116,32 +116,35 @@ box.addEventListener("keyup", function (e) {
 
           rows = document.querySelectorAll(`.board > .row`)
           rows.forEach((row, i) => {
+            if (!guesses[i]) return
+            console.log("guesses[i]2", i, guesses[i], guesses, rows.length)
             let statusOfGuess = checkGuess(guesses[i]).charsStatus
+            console.log("guesses[i]", guesses[i])
             // why did the below not work?
             // let divs = document.querySelectorAll(`.row > div`)
-            let divs = row.querySelectorAll(`div`)
-            divs.forEach((div, j) => {
-              if (guesses[i][j]) {div.innerHTML = guesses[i][j]}
+            let cells = row.querySelectorAll(`div`)
+            cells.forEach((cell, j) => {
+              if (guesses[i][j]) {cell.innerHTML = guesses[i][j]}
               if (statusOfGuess[j].isCorrectPosition) {
-                div.style.backgroundColor = "green";
+                cell.style.backgroundColor = "green";
               } else if (statusOfGuess[j].isIncluded) {
-                div.style.backgroundColor = "yellow"
+                cell.style.backgroundColor = "yellow"
               } else {
-                div.style.backgroundColor = "grey"
+                cell.style.backgroundColor = "darkgrey"
               }
             })
           })
 
-          const secondRow = document.querySelectorAll(`.row-2 > div`)
-          secondRow.forEach((element, i) => element.innerHTML = guesses[1][i])
-          const thirdRow = document.querySelectorAll(`.row-3 > div`)
-          thirdRow.forEach((element, i) => element.innerHTML = guesses[2][i])
-          const fourthRow = document.querySelectorAll(`.row-4 > div`)
-          fourthRow.forEach((element, i) => element.innerHTML = guesses[3][i])
-          const fifthRow = document.querySelectorAll(`.row-5 > div`)
-          fifthRow.forEach((element, i) => element.innerHTML = guesses[4][i])
-          const sixthRow = document.querySelectorAll(`.row-6 > div`)
-          sixthRow.forEach((element, i) => element.innerHTML = guesses[5][i])
+          // const secondRow = document.querySelectorAll(`.row-2 > div`)
+          // secondRow.forEach((element, i) => element.innerHTML = guesses[1][i])
+          // const thirdRow = document.querySelectorAll(`.row-3 > div`)
+          // thirdRow.forEach((element, i) => element.innerHTML = guesses[2][i])
+          // const fourthRow = document.querySelectorAll(`.row-4 > div`)
+          // fourthRow.forEach((element, i) => element.innerHTML = guesses[3][i])
+          // const fifthRow = document.querySelectorAll(`.row-5 > div`)
+          // fifthRow.forEach((element, i) => element.innerHTML = guesses[4][i])
+          // const sixthRow = document.querySelectorAll(`.row-6 > div`)
+          // sixthRow.forEach((element, i) => element.innerHTML = guesses[5][i])
 
           
           
@@ -181,6 +184,7 @@ box.addEventListener("keyup", function (e) {
 
 
 function checkGuess(guess) {
+  console.log("guess:", guess)
   const chars = guess.split("");
   let isCorrectAnswer = true;
 
@@ -224,6 +228,7 @@ console.log("guesses: ", guesses);
 
 function displayGuesses() {
   for (let i = 0; i < guesses.length; i++) {
+    console.log("guesses[i]2", guesses[i])
     if (guesses[i]) {
       let charStatuses = checkGuess(guesses[i])
       console.log("charStatuses", charStatuses)
